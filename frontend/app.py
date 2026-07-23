@@ -261,4 +261,4 @@ if baseline_file and target_file:
 
                     st.error("Unexpected error occurred.")
 
-                    st.write(str(e))¸
+                    st.write(str(e))
