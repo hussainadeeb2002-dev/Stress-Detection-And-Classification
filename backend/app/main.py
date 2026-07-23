@@ -47,5 +47,7 @@ async def predict(
     )
 
     result = predict_stress(features)
+    baseline_path.unlink(missing_ok=True)
+    target_path.unlink(missing_ok=True)
 
     return result

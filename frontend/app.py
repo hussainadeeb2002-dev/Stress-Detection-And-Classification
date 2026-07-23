@@ -4,10 +4,11 @@ import pandas as pd
 import plotly.express as px
 import time
 
-BACKEND_URL = st.secrets.get(
-    "BACKEND_URL",
-    "http://127.0.0.1:8000/predict"
-)
+try:
+    BACKEND_URL = st.secrets["BACKEND_URL"]
+except Exception:
+    BACKEND_URL = "http://127.0.0.1:8000/predict"
+
 st.set_page_config(
     page_title="AI ECG Stress Detection",
     layout="wide"
@@ -260,4 +261,4 @@ if baseline_file and target_file:
 
                     st.error("Unexpected error occurred.")
 
-                    st.write(str(e))
+                    st.write(str(e))¸
