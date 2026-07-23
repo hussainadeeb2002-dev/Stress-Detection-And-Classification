@@ -8,3 +8,4 @@ scipy
 heartpy
 python-multipart
 scikit-learn
+setuptools
