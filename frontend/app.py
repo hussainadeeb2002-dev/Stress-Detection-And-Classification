@@ -173,77 +173,55 @@ if baseline_file and target_file:
                     end_time = time.time()
 
                     if response.status_code == 200:
+                       result = response.json()
+                       prediction = result["prediction"]
+                       score = result["stress_score"]
+                       stress_level = result["stress_level"]
+                       interpretation = result["interpretation"]
 
-                     result = response.json()
-
-                     prediction = result["prediction"]
-
-                     score = result["stress_score"]
-
-                     stress_level = result["stress_level"]
-
-                     interpretation = result["interpretation"]
-
-                     st.markdown("---")
-
-                     st.subheader("Analysis Result")
+                       st.markdown("---")
+                       st.subheader("Analysis Result")
 
                     # =====================================
                     # STATUS MESSAGE
                     # =====================================
 
-                    if score > 0.80:
-                        st.error(
-                            "Severe physiological stress pattern detected."
-                        )
-
-                    elif score > 0.60:
-                        st.warning(
-                            "High stress response detected."
-                        )
-
-                    else:
-                        st.success(
-                            "Low or moderate stress pattern detected."
-                        )
+                       if score > 0.80:
+                          st.error("Severe physiological stress pattern detected.")
+                       elif score > 0.60:
+                          st.warning("High stress response detected.")
+                       else:
+                          st.success("Low or moderate stress pattern detected.")
 
                     # =====================================
                     # METRICS
                     # =====================================
 
-                    metric_col1, metric_col2 = st.columns(2)
+                       metric_col1, metric_col2 = st.columns(2)
+                       with metric_col1:
+                            st.metric(label="Stress Score",value=f"{score:.2%}")
+                       with metric_col2:
+                            st.metric(label="Stress Level",value=stress_level)
 
-                    with metric_col1:
-                        st.metric(
-                            label="Stress Score",
-                            value=f"{score:.2%}"
-                        )
-
-                    with metric_col2:
-                        st.metric(
-                            label="Stress Level",
-                            value=stress_level
-                        )
-
-                    st.markdown("---")
+                       st.markdown("---")
 
                     # =====================================
                     # INTERPRETATION
                     # =====================================
 
-                    st.subheader("AI Interpretation")
-
-                    st.info(interpretation)
+                       st.subheader("AI Interpretation")
+                       st.info(interpretation)
 
                     # =====================================
                     # PROCESSING TIME
                     # =====================================
 
-                    processing_time = end_time - start_time
+                       processing_time = end_time - start_time
+                       st.write(f"Processing Time: {processing_time:.2f} seconds")
 
-                    st.write(
-                        f"Processing Time: {processing_time:.2f} seconds"
-                    )
+                    else:
+                        st.error(f"Backend Error ({response.status_code})")
+                        st.write(response.text) 
 
                 except requests.exceptions.ConnectionError:
 
