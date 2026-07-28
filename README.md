@@ -23,7 +23,7 @@ Among the measures, the dataset contains Electrocardiogram measures of 15 subjec
 
 ## Data Pre-Processing
 
-The Preprocessing of the data is done from the WESAD dataset raw data using the notebooks <a href="./Dataset creator.ipynb">Dataset Creator.ipynb</a> (for Training dataset) and <a href="./Testing ds creator.ipynb">Testing ds creator.ipynb</a>(for testing dataset)
+The Preprocessing of the data is done from the WESAD dataset raw data using the notebooks <a href="./notebooks/Dataset creator.ipynb">Dataset Creator.ipynb</a> (for Training dataset) and <a href="./notebooks/Testing ds creator.ipynb">Testing ds creator.ipynb</a>(for testing dataset)
 
 I used <a href="https://github.com/paulvangentcom/heartrate_analysis_python">HeartPy</a> to detect the ECG peaks in the signals. From the ECG signal, I was able to extract features from 20s extracts that appeared to be relevant in the WESAD paper [[1]](#1).
  
@@ -46,7 +46,7 @@ I used <a href="https://github.com/paulvangentcom/heartrate_analysis_python">Hea
 
 </div>
 
-The exact computation of these features is detailed in the WESAD paper [[1]](#1) and the <a href="./DataPreProcessing Detail.pdf">joined pdf</a>. The computation is also detailed in the comments of the code.
+The exact computation of these features is detailed in the WESAD paper [[1]](#1) and the <a href="./docs/DataPreProcessing Detail.pdf">joined pdf</a>. The computation is also detailed in the comments of the code.
 
 The training has been done with a cross-validation process. I extracted features from samples of 20s with a 1s step from every recording, these samples were coupled with a label: 1=neutral ; 2=stress ; 3=amusement ; 4=meditation. As ECG is very person dependent, I selected a 90s of the baseline (neutral state), extracted the features, and for every 20s sample I divided the features of the sample by the features of the baseline to have a comparison of the sample with a neutral moment from the baseline.
 
@@ -144,7 +144,7 @@ My Deep Learning model has an accuracy increased by **6.56%** and a f1 score inc
 
 ## Testing Results
 
-The model has been retrained with the same process on the complete cross-validation dataset (training + validation) to be tested on new data (subject 17 data). This has been done in the notebooks <a href="./Model_test.ipynb">Model_test.ipynb</a>. 
+The model has been retrained with the same process on the complete cross-validation dataset (training + validation) to be tested on new data (subject 17 data). This has been done in the notebooks <a href="./notebooks/Model_test.ipynb">Model_test.ipynb</a>. 
 The best model gives the following confusion matrixes for the testing set (Subject S17):
 
 <p align="center">
