@@ -10,7 +10,7 @@ except Exception:
     BACKEND_URL = "http://127.0.0.1:8000/predict"
 
 st.set_page_config(
-    page_title="AI ECG Stress Detection",
+    page_title="ECG Stress Prediction System",
     layout="wide"
 )
 
@@ -18,10 +18,10 @@ st.set_page_config(
 # HEADER
 # =========================================================
 
-st.title("AI ECG Stress Detection System")
+st.title("ECG Stress Prediction System")
 
 st.caption(
-    "Physiological stress analysis using ECG signals and machine learning"
+    "Machine Learning-Based Physiological Stress Prediction from ECG Signals"
 )
 
 # =========================================================
@@ -55,27 +55,32 @@ upload_col1, upload_col2 = st.columns(2)
 
 if use_demo:
 
-    demo_type = st.selectbox(
-        "Select Demo",
-        [
-            "Low Stress",
-            "Medium Stress",
-            "High Stress"
-        ]
-    )
+        demo_type = st.selectbox(
+            "Choose a Demo Sample",
+            [
+            "Select Demo Sample...",
+            "low_stress_sample",
+            "medium_stress_sample",
+            "high_stress_sample"
+            ]
+        )
 
-    folder_map = {
-        "Low Stress": "samples/low_stress",
-        "Medium Stress": "samples/medium_stress",
-        "High Stress": "samples/high_stress"
-    }
+        folder_map = {
+            "low_stress_sample": "samples/low_stress",
+            "medium_stress_sample": "samples/medium_stress",
+            "high_stress_sample": "samples/high_stress"
+        }
 
-    folder = folder_map[demo_type]
+        baseline_file = None
+        target_file = None
 
-    baseline_file = open(f"{folder}/baseline.csv", "rb")
-    target_file = open(f"{folder}/target.csv", "rb")
+        if demo_type != "Select Demo Sample...":
 
-    st.success(f"{demo_type} demo loaded successfully.")
+            folder = folder_map[demo_type]
+
+            baseline_file = open(f"{folder}/baseline.csv", "rb")
+            target_file = open(f"{folder}/target.csv", "rb")
+
 
 else:
 
@@ -97,7 +102,6 @@ else:
 
 if baseline_file and target_file:
 
-    st.success("Both ECG files uploaded successfully.")
 
     left_col, right_col = st.columns([1, 2])
 
@@ -157,9 +161,9 @@ if baseline_file and target_file:
 
     with left_col:
 
-        st.subheader("AI Prediction Dashboard")
+        st.subheader("Prediction Dashboard")
 
-        if st.button("Analyze Stress Level"):
+        if st.button("Analyze"):
 
             start_time = time.time()
 
@@ -211,27 +215,14 @@ if baseline_file and target_file:
                     # METRICS
                     # =====================================
 
-                       metric_col1, metric_col2 = st.columns(2)
-                       with metric_col1:
-                            st.metric(label="Stress Score",value=f"{score:.2%}")
-                       with metric_col2:
-                            st.metric(label="Stress Level",value=stress_level)
-
                        st.markdown("---")
-
-                    # =====================================
-                    # INTERPRETATION
-                    # =====================================
-
-                       st.subheader("AI Interpretation")
+                       st.metric(label="Stress Probability Score",value=f"{score:.2%}")
+                       st.metric(label="Stress Severity",value=stress_level)
+                       st.subheader("Interpretation")
                        st.info(interpretation)
 
-                    # =====================================
-                    # PROCESSING TIME
-                    # =====================================
-
                        processing_time = end_time - start_time
-                       st.write(f"Processing Time: {processing_time:.2f} seconds")
+                       st.metric(label="Inference Time",value=f"{processing_time:.2f} s")
 
                     else:
                         st.error(f"Backend Error ({response.status_code})")

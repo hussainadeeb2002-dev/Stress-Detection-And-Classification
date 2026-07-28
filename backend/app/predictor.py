@@ -21,7 +21,7 @@ def get_stress_level(score):
         return "High Stress"
 
     else:
-        return "Severe Stress"
+        return "High Stress"
 
 
 def get_interpretation(score):
