@@ -48,20 +48,34 @@ st.sidebar.info(
 # =========================================================
 
 st.subheader("Upload ECG Files")
+
 use_demo = st.checkbox("Use Demo ECG Files")
+
 upload_col1, upload_col2 = st.columns(2)
 
 if use_demo:
 
-    baseline_path = "sample_data/baseline.csv"
+    demo_type = st.selectbox(
+        "Select Demo",
+        [
+            "Low Stress",
+            "Medium Stress",
+            "High Stress"
+        ]
+    )
 
-    target_path = "sample_data/target.csv"
+    folder_map = {
+        "Low Stress": "samples/low_stress",
+        "Medium Stress": "samples/medium_stress",
+        "High Stress": "samples/high_stress"
+    }
 
-    baseline_file = open(baseline_path, "rb")
+    folder = folder_map[demo_type]
 
-    target_file = open(target_path, "rb")
+    baseline_file = open(f"{folder}/baseline.csv", "rb")
+    target_file = open(f"{folder}/target.csv", "rb")
 
-    st.success("Demo ECG files loaded successfully.")
+    st.success(f"{demo_type} demo loaded successfully.")
 
 else:
 

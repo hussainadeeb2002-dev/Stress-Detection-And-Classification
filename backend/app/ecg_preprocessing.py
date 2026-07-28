@@ -135,16 +135,19 @@ def normalize_features(features, baseline_features):
 
     return result
 
-def load_ecg_csv(csv_path, column_name=None):
+def load_ecg_csv(csv_file, column_name="ecg"):
+    df = pd.read_csv(csv_file)
 
-    df = pd.read_csv(csv_path)
+    # Match column names case-insensitively
+    columns = {c.lower(): c for c in df.columns}
 
-    if column_name is None:
-        column_name = df.columns[0]
+    if column_name.lower() not in columns:
+        raise ValueError(
+            f"Column '{column_name}' not found. Available columns: {list(df.columns)}"
+        )
 
-    ecg_signal = df[column_name].values
-
-    return np.array(ecg_signal)
+    actual_column = columns[column_name.lower()]
+    return df[actual_column].values
 
 def prepare_features_from_csv(
     target_csv_path,
