@@ -6,7 +6,7 @@ venv/
 .env
 .ipynb_checkpoints/
 WESAD/
-
-# Temporary folders
 _temp_demo/
 temp_uploads/
+.vscode/
+.devcontainer/
