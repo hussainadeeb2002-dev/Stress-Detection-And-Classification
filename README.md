@@ -38,7 +38,7 @@ The application allows users to:
 >
 > This application is intended solely as a demonstration of the trained model and research workflow. It is not intended for clinical diagnosis or medical decision-making.
 
-## 🖥️ Application Overview
+## Application Overview
 
 The repository combines the original deep learning research implementation with a lightweight web application that demonstrates the trained model. The application follows a client-server architecture, where a Streamlit frontend communicates with a FastAPI backend to perform ECG preprocessing, feature extraction, and stress prediction.
 
@@ -132,7 +132,7 @@ Finally, for each created Training dataset, I have chosen to discard incorrect d
 
 ## Model and Training
 
-The training and results analysis (for cross-validation) of the model can be done using the notebooks <a href="./Model.ipynb">Model.ipynb</a>.
+The training and results analysis (for cross-validation) of the model can be done using the notebooks <a href="./notebooks/Model.ipynb">Model.ipynb</a>.
 
 My model is a Full Connected Neural Network. Each Full Connected (FC) layer is followed by a Batch Normalization layer, a Dropout(p= 0.5) layer, and a LeakyRelu (a=0.2) layer. <br> The size of these layers decreases from 128 &#8594; 64 &#8594; 16 &#8594; 4 &#8594; 1. The final FC layer is followed by a Sigmoid function to obtain an output &#8712; [0;1]. 
 
