@@ -18,9 +18,29 @@ To demonstrate the trained model, this repository also includes a lightweight we
 
 The web application is intended as a demonstration of the trained model and research workflow. It is not designed as a clinical or production-ready diagnostic system. The model has been trained on the <a href="https://archive.ics.uci.edu/ml/datasets/WESAD+%28Wearable+Stress+and+Affect+Detection%29">WESAD dataset</a>.
 
+## 🚀 Live Demo
+
+A lightweight demonstration of the trained ECG stress prediction model is available on Streamlit.
+
+**🌐 Web Application**
+
+https://stress-detection-and-classification-dk2ebr8paw4xdxuasxcur2.streamlit.app
+
+The application allows users to:
+
+- Upload baseline and target ECG recordings.
+- Use built-in sample ECG recordings for quick testing.
+- Visualize ECG waveforms before prediction.
+- Run stress inference using the trained deep learning model.
+- View the model's stress confidence score and qualitative stress classification.
+
+> **Note**
+>
+> This application is intended solely as a demonstration of the trained model and research workflow. It is not intended for clinical diagnosis or medical decision-making.
+
 ## Dataset
 
-The WESAD is a dataset built by Schmidt P et al [[1]](#1) because there was no dataset for stress detection with physiological at this time.
+The WESAD is a dataset built by Schmidt P et al [[1]](#1) because there was no dataset for stress detection with physiological at the time.
 
 Among the measures, the dataset contains Electrocardiogram measures of 15 subjects during 2 hours with stressing, amusing, relaxing, and neutral situations. The ECG is measured with an ECG sensor placed on the chest with a frequency of 700Hz. This is a 20s sample from the dataset:
 
