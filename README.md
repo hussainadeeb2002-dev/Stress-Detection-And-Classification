@@ -18,7 +18,7 @@ To demonstrate the trained model, this repository also includes a lightweight we
 
 The web application is intended as a demonstration of the trained model and research workflow. It is not designed as a clinical or production-ready diagnostic system. The model has been trained on the <a href="https://archive.ics.uci.edu/ml/datasets/WESAD+%28Wearable+Stress+and+Affect+Detection%29">WESAD dataset</a>.
 
-## 🚀 Live Demo
+## Live Demo
 
 A lightweight demonstration of the trained ECG stress prediction model is available on Streamlit.
 
@@ -37,6 +37,19 @@ The application allows users to:
 > **Note**
 >
 > This application is intended solely as a demonstration of the trained model and research workflow. It is not intended for clinical diagnosis or medical decision-making.
+
+## Application Overview
+
+The repository combines the original deep learning research implementation with a simple web application that demonstrates the trained model.
+
+The application follows a client-server architecture:
+
+- The **Streamlit frontend** provides an interactive interface for uploading ECG recordings, exploring sample data, visualizing ECG signals, and displaying prediction results.
+- The **FastAPI backend** handles ECG preprocessing, feature extraction, baseline normalization, model inference, and response generation.
+- A trained **PyTorch neural network** performs binary stress prediction using 12 extracted ECG features.
+- The frontend communicates with the backend through REST API requests, allowing the prediction pipeline to remain modular and reusable.
+
+This application demonstrates the complete inference workflow developed for the project while keeping the research code, trained model, and deployment components organized within a single repository.
 
 ## Dataset
 
