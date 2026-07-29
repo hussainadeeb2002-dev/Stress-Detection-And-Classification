@@ -9,7 +9,14 @@
 
 ## Introduction
 
-This project aims at developing a deep learning model able to predict the emotional state (stress/no stress) of an individual based on his/her ElectroCardiogram signal. The model has been trained on the <a href="https://archive.ics.uci.edu/ml/datasets/WESAD+%28Wearable+Stress+and+Affect+Detection%29">WESAD dataset</a>.
+This project presents a deep learning-based ECG Stress Prediction System developed using the WESAD (Wearable Stress and Affect Detection) dataset. The model predicts whether a subject is experiencing stress based on features extracted from electrocardiogram (ECG) signals.
+
+To demonstrate the trained model, this repository also includes a lightweight web application consisting of:
+
+- **FastAPI Backend** for ECG preprocessing, feature extraction, and model inference.
+- **Streamlit Frontend** for uploading ECG recordings, visualizing signals, and displaying prediction results.
+
+The web application is intended as a demonstration of the trained model and research workflow. It is not designed as a clinical or production-ready diagnostic system. The model has been trained on the <a href="https://archive.ics.uci.edu/ml/datasets/WESAD+%28Wearable+Stress+and+Affect+Detection%29">WESAD dataset</a>.
 
 ## Dataset
 
