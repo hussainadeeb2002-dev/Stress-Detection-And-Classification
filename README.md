@@ -1,10 +1,12 @@
 ## Table Of Contents
 * [Introduction](#introduction)
+* [Live Demo](#live-demo)
+* [Application Overview](#application-overview)
 * [Dataset](#dataset)
 * [Data Pre-Processing](#data-pre-processing)
 * [Model and Training](#model-and-training)
 * [Cross Validation Results](#cross-validation-results)
-* [Results on testing set](#results-on-testing-set)
+* [Testing Results](#testing-results)
 * [References](#references)
 
 ## Introduction
