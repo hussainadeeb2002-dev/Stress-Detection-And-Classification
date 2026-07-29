@@ -38,18 +38,41 @@ The application allows users to:
 >
 > This application is intended solely as a demonstration of the trained model and research workflow. It is not intended for clinical diagnosis or medical decision-making.
 
-## Application Overview
+## 🖥️ Application Overview
 
-The repository combines the original deep learning research implementation with a simple web application that demonstrates the trained model.
+The repository combines the original deep learning research implementation with a lightweight web application that demonstrates the trained model. The application follows a client-server architecture, where a Streamlit frontend communicates with a FastAPI backend to perform ECG preprocessing, feature extraction, and stress prediction.
 
-The application follows a client-server architecture:
+### Frontend
 
-- The **Streamlit frontend** provides an interactive interface for uploading ECG recordings, exploring sample data, visualizing ECG signals, and displaying prediction results.
-- The **FastAPI backend** handles ECG preprocessing, feature extraction, baseline normalization, model inference, and response generation.
-- A trained **PyTorch neural network** performs binary stress prediction using 12 extracted ECG features.
-- The frontend communicates with the backend through REST API requests, allowing the prediction pipeline to remain modular and reusable.
+The Streamlit application allows users to:
 
-This application demonstrates the complete inference workflow developed for the project while keeping the research code, trained model, and deployment components organized within a single repository.
+- Upload **Baseline ECG** and **Target ECG** recordings.
+- Load sample ECG recordings for quick demonstration.
+- Visualize ECG waveforms before prediction.
+- Display the model's stress confidence score and qualitative stress classification.
+
+### Backend
+
+The FastAPI backend is responsible for:
+
+- Reading uploaded ECG recordings.
+- Extracting the same 12 ECG-derived features used during model training.
+- Normalizing target features using the baseline recording.
+- Loading the trained PyTorch model and performing inference.
+- Returning prediction results to the frontend through a REST API.
+
+### Stress Prediction Approach
+
+The prediction pipeline follows the same preprocessing workflow used during model development:
+
+1. Baseline and target ECG recordings are uploaded.
+2. ECG preprocessing and feature extraction are performed on both recordings.
+3. Target features are normalized using the baseline features to reduce subject-specific variability.
+4. The resulting 12-feature vector is passed to the trained neural network.
+5. The model produces a sigmoid output between **0** and **1**, which is presented in the application as a **Stress Confidence Score**.
+6. The application maps this continuous confidence score to a qualitative stress classification to provide an intuitive interpretation of the prediction.
+
+The web application is intended as a demonstration of the trained model and inference workflow. It is not intended for clinical diagnosis or medical decision-making.
 
 ## Dataset
 
