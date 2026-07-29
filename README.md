@@ -44,6 +44,12 @@ The application allows users to:
 
 The repository combines the original deep learning research implementation with a lightweight web application that demonstrates the trained model. The application follows a client-server architecture, where a Streamlit frontend communicates with a FastAPI backend to perform ECG preprocessing, feature extraction, and stress prediction.
 
+<p align="center">
+  <img src="./Media/home.png" alt="Home" width="46%" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./Media/prediction_dashboard.png" alt="Prediction Dashboard" width="46%" />
+</p>
+
 ### Frontend
 
 The Streamlit application allows users to:
